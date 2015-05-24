@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="fr">
+  <head>
+      {% block head %}
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1">
+      <meta name="description" content="Créer gratuitement sa première application web avec Flask et Google App Engine">
+      <meta name="author" content="Joël Viellepeau">
+      <title>{% block title %}{% endblock %}</title>
+      <link rel="icon" href="favicon.ico">
+      <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
+      <link rel="stylesheet" href="css/style.css">
+      {% endblock %}
+  </head>
+  <body class="container-fluid">
+      <div id="content">{% block content %}{% endblock %}</div>
+      <footer>{% block footer %} &copy; Copyright 2015 flask-start.appspot.com | <a href="https://github.com/viellepeau/flask-start">Code source</a> {% endblock %}</footer>
+  </body>
+</html>

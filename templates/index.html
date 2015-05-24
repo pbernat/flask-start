@@ -2,6 +2,7 @@
 <html>
   <head>
       <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1">
       <meta name="description" content="Créer gratuitement sa première application web avec Flask et Google App Engine">
       <meta name="author" content="Joël Viellepeau">
       <title>flask | appengine</title>
@@ -42,7 +43,12 @@
           </ul>
         </div>
 
-        <div class="col-md-6 text-center"><img src="img/technos.jpg" alt="technologies" class="img-responsive"></div>
+        <div class="col-md-6 text-center">
+          <img src="img/technos.jpg" alt="technologies" class="img-responsive">
+          <img src="img/dev_appserver.jpg" alt="dev_appserver.py" class="img-responsive">
+          <br>
+          <img src="img/datastore.jpg" alt="Google datastore" class="img-responsive">
+        </div>
       </div>
     </main>
 
@@ -59,9 +65,8 @@
           {{user.email()}}
           <span class="caret"></span>
         </button>
-        <ul class="dropdown-menu" role="menu">
-          <!--  Page de profil utilisateur à créer --> 
-          <li><a href="#">Voir mon profil</a></li>
+        <ul class="dropdown-menu" role="menu"> 
+          <li><a href="/profile">Voir mon profil</a></li>
           <li class="divider"></li>
           <li><a href="{{logout_url}}">Déconnexion</a></li>
         </ul>

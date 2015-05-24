@@ -16,6 +16,13 @@ handlers:
   # Accès limité aux administrateurs de l'application
   login: admin
 
+# url vraie si elle vaut <appid>.appspot.com/profile
+- url: /profile
+  # Si la requête est de la forme définit plus haut, traiter cette dernière avec le fichier main.py
+  script: main.app
+  # Accès limité aux utilisateurs connectés avec leur compte google. L'utilisateur est redirigé sur le page de login Google s'il est non connecté 
+  login: required
+
 # url vraie si vide ou ne contient pas de point  
 - url: /[^.]*
   # Si la requête est de la forme définit plus haut, traiter cette dernière avec le fichier main.py

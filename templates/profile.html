@@ -1,0 +1,88 @@
+{% extends "base.html" %}
+{% block title %}Mon Profile{% endblock %}
+{% block head %}
+  {{ super() }}
+  <style type="text/css">
+    .important { color: #336699; }
+  </style>
+{% endblock %}
+{% block content %}
+
+    <header class="jumbotron text-center">
+      <h1> Mon profil utilisateur </h1>
+      <a href="/">Retourner à l'accueil</a>
+    </header>
+
+    <main class="container">
+      <div class="row">
+        <div class="col-md-6">
+          <h2>Données accessibles lorsque l'utilisateur se connecte avec son profil Google à l'application :</h2>
+
+          <ul>
+
+            <li>
+              Utilisateur actuellement connecté ?
+              <strong>
+                {{ user is defined }}
+              </strong>
+            </li>
+
+            <li>
+              L'utilisateur est-il administrateur de cette application web ?
+              <strong>
+                {{ is_admin }}
+              </strong>
+            </li>
+
+            <li>
+              Adresse email :
+              <strong>{{user.email()}}</strong>
+            </li>
+
+            <li>
+              Nickname :
+              <strong>{{user.nickname()}}</strong>
+            </li>
+
+            <li>
+              Google id :
+              <strong>{{user.user_id()}}</strong>
+            </li>
+
+            <li>
+              Federated id :
+              <strong>{{user.federated_identity()}}</strong>
+            </li>
+
+            <li>
+              Federated provider :
+              <strong>{{user.federated_provider()}}</strong>
+            </li>
+
+            <li>
+              url de connexion:
+              {{login_url}}
+            </li>
+
+            <li>
+              url de déconnexion:
+              {{logout_url}}
+            </li>
+
+          </ul>
+
+        </div>
+        <div class="col-md-6 text-center">
+          <img src="img/google-login.jpg" alt="google login overview">
+        </div>
+
+
+      </div>
+    </main>
+
+    <div id="logging-io">
+        <a href="{{logout_url}}" class="btn btn-warning">Déconnexion</a>
+    </div>
+
+
+{% endblock %}
