@@ -1,5 +1,5 @@
 
-application: flask-start # cf. id de l'application acquise sur appengine.google.com
+application: immov1-test # cf. id de l'application acquise sur appengine.google.com
 version: 1
 runtime: python27
 api_version: 1

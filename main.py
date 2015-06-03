@@ -3,11 +3,16 @@
 
 #import logging
 from google.appengine.api import users
-from flask import Flask, render_template, request
+from google.appengine.ext import ndb
+from flask import Flask, render_template, request, redirect
 
 app = Flask(__name__)
 
 app.jinja_env.line_statement_prefix = '#'
+
+class Flat(ndb.Model):
+    price = ndb.IntegerProperty()
+    name = ndb.StringProperty()
 
 @app.route('/', methods=['GET'])
 def index():
@@ -20,6 +25,7 @@ def index():
 
     ma_variable_integer = 4
     ma_variable_string  = "bonjour"
+    a = "adieu"
 
     return render_template('index.html', toto = ma_variable_integer, tata = ma_variable_string, **locals())
 
@@ -40,3 +46,12 @@ def user_profile():
 def admin_dashboard():
 
     return "Page réservée à l'administrateur"
+
+@app.route('/search', methods=['POST'])
+def search():
+    search = request.form["recherche"]
+    flat = Flat()
+    flat.name = search
+    flat.put()
+    return render_template('index.html', marecherche = search)
+
