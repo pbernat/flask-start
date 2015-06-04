@@ -12,7 +12,16 @@ app.jinja_env.line_statement_prefix = '#'
 
 class Flat(ndb.Model):
     price = ndb.IntegerProperty()
-    name = ndb.StringProperty()
+    street = ndb.StringProperty()
+    zip_code = IntegerProperty() 
+    for_rent = ndb.BooleanProperty()
+    city = ndb.StringProperty()
+    owners = ndb.KeyProperty(repeated=True)
+
+class Owner(ndb.Model):
+    email = ndb.StringProperty()
+
+
 
 @app.route('/', methods=['GET'])
 def index():
