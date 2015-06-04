@@ -13,13 +13,19 @@ app.jinja_env.line_statement_prefix = '#'
 class Flat(ndb.Model):
     price = ndb.IntegerProperty()
     street = ndb.StringProperty()
-    zip_code = IntegerProperty() 
+    zip_code = ndb.IntegerProperty() 
     for_rent = ndb.BooleanProperty()
     city = ndb.StringProperty()
     owners = ndb.KeyProperty(repeated=True)
 
-class Owner(ndb.Model):
+class Customer(ndb.Model):
     email = ndb.StringProperty()
+    lastname = ndb.StringProperty()
+    firstname = ndb.StringProperty()
+    phone_number = ndb.IntegerProperty()
+    is_owner = ndb.BooleanProperty()
+    flats = ndb.KeyProperty(repeated=True)
+
 
 
 
@@ -60,7 +66,17 @@ def admin_dashboard():
 def search():
     search = request.form["recherche"]
     flat = Flat()
-    flat.name = search
+    flat.street = search
     flat.put()
+    return render_template('index.html', marecherche = search)
+
+
+@app.route('/addCustomer', methods=['POST'])
+def add_customer():
+    customer = Customer()
+    customer.lastname = request.form["lastname"]
+    customer.firstname = request.form["firstname"]
+    customer.phone_number = request.form["phone_number"]
+    customer.put()
     return render_template('index.html', marecherche = search)
 
